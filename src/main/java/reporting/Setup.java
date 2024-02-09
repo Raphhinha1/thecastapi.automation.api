@@ -6,24 +6,30 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.io.File;
+
 public class Setup implements ITestListener {
     private static ExtentReports extentReports;
     public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
-    public void onStart(ITestContext context) {
-        String fileName = ExtentReportManager.getReportNameWithTimeStamp();
-        String fullReportPath = System.getProperty("user.dir") + "\\reports\\" + fileName;
-        extentReports = ExtentReportManager.createInstance(fileName, "Test API Automation", "Test Execution");
+    private static final String SEPARATOR = File.separator;
 
+
+    public void onStart(ITestContext context) {
+
+        String fileName = ExtentReportManager.getReportNameWithTimeStamp();
+        String fullReportPath = System.getProperty("user.dir") + SEPARATOR + "reports" + SEPARATOR + fileName;
+        System.out.println(fullReportPath);
+        extentReports = ExtentReportManager.createInstance(fullReportPath, "Test API Automation Report", "Test ExecutionReport");
     }
 
     public void onFinish(ITestContext context) {
-        if(extentReports != null)
+        if (extentReports != null)
             extentReports.flush();
     }
 
     public void onTestStart(ITestResult result) {
-      ExtentTest test =  extentReports.createTest("Test Name " + result.getTestClass().getName() + "-" + result.getMethod().getMethodName());
-    extentTest.set(test);
+        ExtentTest test = extentReports.createTest("Test Name " + result.getTestClass().getName() + "-" + result.getMethod().getMethodName());
+        extentTest.set(test);
     }
 
 }
