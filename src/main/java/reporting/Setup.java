@@ -9,7 +9,6 @@ import org.testng.ITestResult;
 public class Setup implements ITestListener {
     private static ExtentReports extentReports;
     public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
-    public static String name = "raphael";
     public void onStart(ITestContext context) {
         String fileName = ExtentReportManager.getReportNameWithTimeStamp();
         String fullReportPath = System.getProperty("user.dir") + "\\reports\\" + fileName;

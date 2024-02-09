@@ -4,11 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
-import restUtils.RestUtils;
-import utils.JsonUtils;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 
@@ -16,7 +13,7 @@ public class VotesTest extends VotesAPIs{
     double number = (int) Math.floor(Math.random() * 1000);
 
     @Test
-    public void createUpVote() throws IOException {
+    public void createUpVote() {
 
         Map<String, Object> payload = Payloads.getCreateVotesPayloadFromMap("image" + number,"raphhinha1", "1");
         Response response = createVote(payload);
@@ -24,7 +21,7 @@ public class VotesTest extends VotesAPIs{
     }
 
     @Test
-    public void createDownVote() throws IOException {
+    public void createDownVote() {
 
         Map<String, Object> payload = Payloads.getCreateVotesPayloadFromMap("image" + number + 1,"raphhinha1", "-1");
         Response response = createVote(payload);
@@ -32,7 +29,7 @@ public class VotesTest extends VotesAPIs{
     }
 
     @Test
-    public void createWithoutImageIdVote() throws IOException {
+    public void createWithoutImageIdVote() {
 
         Map<String, Object> payload = Payloads.getCreateVotesPayloadFromMap("","raphhinha1", "1");
         Response response = createVote(payload);

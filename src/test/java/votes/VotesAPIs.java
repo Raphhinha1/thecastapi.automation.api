@@ -1,6 +1,5 @@
 package votes;
 
-import freemarker.core.ReturnInstruction;
 import io.restassured.response.Response;
 import restUtils.RestUtils;
 
@@ -12,5 +11,5 @@ public class VotesAPIs {
     public Response createVote(Map<String, Object> createVotesPayLoad){
        String endPoint = (String) Base.dataFromJsonFile.get("createVoteEndpoint");
        return RestUtils.votePost(endPoint, createVotesPayLoad, new HashMap<>());
-    };
+    }
 }
