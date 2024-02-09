@@ -9,9 +9,13 @@
         <classes>
             <class name="votes.VotesTest">
                 <methods>
+
                     <include name="createUpVote"/>
                     <include name="createDownVote"/>
                     <include name="createWithoutImageIdVote"/>
+                    <include name="createDifferentValueVote"/>
+                    <include name="createWithoutSubIdVote"/>
+                    <include name="createWithoutValueVote"/>
                     <include name="getAllVotes"/>
                 </methods>
             </class>
