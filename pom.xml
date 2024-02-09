@@ -52,17 +52,17 @@
     </dependency>
 
 
-    <dependency>
-      <groupId>io.rest-assured</groupId>
-      <artifactId>xml-path</artifactId>
-      <version>5.4.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.rest-assured</groupId>-->
+<!--      <artifactId>xml-path</artifactId>-->
+<!--      <version>5.4.0</version>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>io.rest-assured</groupId>
-      <artifactId>json-path</artifactId>
-      <version>5.4.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>io.rest-assured</groupId>-->
+<!--      <artifactId>json-path</artifactId>-->
+<!--      <version>5.4.0</version>-->
+<!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
     <dependency>
@@ -91,11 +91,11 @@
       <version>2.10.1</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-    <dependency>
-      <groupId>com.aventstack</groupId>
-      <artifactId>extentreports</artifactId>
-      <version>5.1.1</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>com.aventstack</groupId>-->
+<!--      <artifactId>extentreports</artifactId>-->
+<!--      <version>5.1.1</version>-->
+<!--    </dependency>-->
     <!-- https://mvnrepository.com/artifact/net.datafaker/datafaker -->
     <dependency>
       <groupId>net.datafaker</groupId>
