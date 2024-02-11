@@ -2,6 +2,7 @@
 /src/main/resources/config.properties
 
 # Maven
+/target/
 /target
 
 # IntelliJ IDEA
