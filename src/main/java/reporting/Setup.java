@@ -7,7 +7,6 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class Setup implements ITestListener {
@@ -39,8 +38,8 @@ public class Setup implements ITestListener {
 
         String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
         stackTrace = stackTrace.replaceAll(",", "<br>");
-        String formattedTrace ="<details>\n" +
-                "   "+stackTrace+"\n" +
+        String formattedTrace = "<details>\n" +
+                "   " + stackTrace + "\n" +
                 "</details>";
         ExtentReportManager.logExceptionDetails(formattedTrace);
     }

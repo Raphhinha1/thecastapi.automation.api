@@ -9,14 +9,15 @@ import java.util.Map;
 
 public class VotesAPIs {
 
-    public Response createVote(Map<String, Object> createVotesPayLoad){
-       String endPoint = (String) Base.dataFromJsonFile.get("voteEndpoint");
-       return RestUtils.votePost(endPoint, createVotesPayLoad, new HashMap<>());
+    public Response getVote(String voteId, String subId, Integer page, Integer limit, String order) {
+        String endPoint = (String) Base.dataFromJsonFile.get("voteEndpoint");
+        return RestUtils.getVote(endPoint, voteId, subId, page, limit, order);
     }
+
 
     public Response createVote(Votes createVotesPayLoad){
         String endPoint = (String) Base.dataFromJsonFile.get("voteEndpoint");
-        return RestUtils.votePost(endPoint, createVotesPayLoad, new HashMap<>());
+        return RestUtils.votePost(endPoint, createVotesPayLoad);
     }
 
 

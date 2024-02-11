@@ -1,22 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <listeners>
         <listener class-name="reporting.Setup"></listener>
     </listeners>
-    <test verbose="2" preserve-order="true"
-          name="/Users/raphael/git/thecastapi.automation.api/src/test/java/votes/VotesTest.java">
+    <test verbose="2" preserve-order="true" name="VotesTest">
         <classes>
-            <class name="votes.VotesTest">
+            <class name="votes.VotesPostTest">
                 <methods>
-
                     <include name="createUpVote"/>
                     <include name="createDownVote"/>
                     <include name="createWithoutImageIdVote"/>
                     <include name="createDifferentValueVote"/>
                     <include name="createWithoutSubIdVote"/>
+                    <include name="createWithoutImageIdAndSubIdVote"/>
                     <include name="createWithoutValueVote"/>
-                    <include name="getAllVotes"/>
+                    <include name="createDownVoteWithNumericAndImageId"/>
+                    <include name="createUpVoteWithNumericSubId"/>
+                </methods>
+            </class>
+            <class name="votes.VotesGetTest">
+                <methods>
+                    <include name="getVoteBySubId"/>
+                    <include name="getVoteWithSubIdOrderAndLimit"/>
+                    <include name="getVoteWithPageAndLimit"/>
+                    <include name="getVoteWithOrder"/>
+                    <include name="getVoteWithInvalidSubId"/>
+                    <include name="getVoteByVoteId"/>
+
                 </methods>
             </class>
         </classes>

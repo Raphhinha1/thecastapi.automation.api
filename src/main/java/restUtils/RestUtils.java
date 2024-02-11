@@ -6,15 +6,17 @@ import io.restassured.response.Response;
 import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
+import org.testng.Assert;
 import reporting.ExtentReportManager;
-
-import java.util.Map;
+import utils.ConfigReader;
 
 public class RestUtils {
-    private static RequestSpecification getRequestSpecificationString(String endPoint, Object requestPayload, Map<String, String> headers) {
+    static String xApiKey = ConfigReader.getApiKey();
+
+    private static RequestSpecification getRequestSpecificationString(String endPoint, Object requestPayload) {
         return RestAssured.given().log().all()
                 .baseUri(endPoint)
-                .header("x-api-key", "live_OPZZQUS7wlcd4ztnHXoAmvJzaEyzRIM1lhkJCgASGuGS0sc9z6vIA2IYBo1GOiIq")
+                .header("x-api-key", xApiKey)
                 .contentType(ContentType.JSON)
                 .body(requestPayload);
     }
@@ -23,38 +25,50 @@ public class RestUtils {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpecification);
         ExtentReportManager.logInfoDetails("Endpoint is " + queryableRequestSpecification.getBaseUri());
         ExtentReportManager.logInfoDetails("Method is " + queryableRequestSpecification.getMethod());
-        ExtentReportManager.logInfoDetails("Headers are ");
-        ExtentReportManager.logHeaders(queryableRequestSpecification.getHeaders().asList());
         ExtentReportManager.logInfoDetails("Request body is");
         ExtentReportManager.logJson(queryableRequestSpecification.getBody());
     }
 
     private static void printResponseLogInReport(Response response) {
         ExtentReportManager.logInfoDetails("Response status is " + response.getStatusCode());
-        ExtentReportManager.logInfoDetails("Response Headers are ");
-        ExtentReportManager.logHeaders(response.getHeaders().asList());
         ExtentReportManager.logInfoDetails("Response body is");
         ExtentReportManager.logJson(response.getBody().prettyPrint());
     }
 
-    public static Response votePost(String endPoint, String requestPayload, Map<String, String> headers) {
-        RequestSpecification requestSpecification = getRequestSpecificationString(endPoint, requestPayload, headers);
-        Response response = requestSpecification.post();
+
+    public static Response getVote(String endPoint, String voteId, String subId, Integer page, Integer limit, String order) {
+        RequestSpecification requestSpecification = getRequestSpecificationString(endPoint, "");
+
+        if (voteId != null) {
+            requestSpecification = getRequestSpecificationString(endPoint + "/" + voteId, "");
+        }
+
+        if (subId != null) {
+            requestSpecification.queryParam("sub_id", subId);
+        }
+
+        if (page != null) {
+            requestSpecification.queryParam("page", page);
+        }
+
+        if (limit != null) {
+            requestSpecification.queryParam("limit", limit);
+        }
+
+        if (order != null) {
+            requestSpecification.queryParam("order", order);
+        }
+
+        Response response = requestSpecification.get();
         printRequestLogInReport(requestSpecification);
         printResponseLogInReport(response);
         return response;
     }
 
-    public static Response votePost(String endPoint, Map<String, Object> requestPayload, Map<String, String> headers) {
-        RequestSpecification requestSpecification = getRequestSpecificationString(endPoint, requestPayload, headers);
-        Response response = requestSpecification.post();
-        printRequestLogInReport(requestSpecification);
-        printResponseLogInReport(response);
-        return response;
-    }
 
-    public static Response votePost(String endPoint, Object requestPayloadAsPojo, Map<String, String> headers) {
-        RequestSpecification requestSpecification = getRequestSpecificationString(endPoint, requestPayloadAsPojo, headers);
+
+    public static Response votePost(String endPoint, Object requestPayloadAsPojo) {
+        RequestSpecification requestSpecification = getRequestSpecificationString(endPoint, requestPayloadAsPojo);
         Response response = requestSpecification.post();
         printRequestLogInReport(requestSpecification);
         printResponseLogInReport(response);

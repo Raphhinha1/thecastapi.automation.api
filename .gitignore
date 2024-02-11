@@ -1,1 +1,28 @@
 /reports
+/src/main/resources/config.properties
+
+# Maven
+/target/
+
+# IntelliJ IDEA
+/.idea/
+
+# Eclipse
+/.classpath
+/.project
+
+# Arquivos temporários e caches
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Node.js
+/node_modules/
+
+# Arquivos de configuração específicos do usuário
+/settings.xml
