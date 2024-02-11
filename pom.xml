@@ -172,7 +172,7 @@
                                 <outputDirectory>${basedir}/target/classes</outputDirectory>
                                 <resources>
                                     <resource>
-                                        <directory>${basedir}/src/main/resources</directory>
+                                        <directory>${basedir}/src/main/java/resources</directory>
                                         <filtering>true</filtering>
                                     </resource>
                                 </resources>
