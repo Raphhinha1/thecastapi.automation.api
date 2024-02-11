@@ -4,8 +4,6 @@ import io.restassured.response.Response;
 import restUtils.RestUtils;
 import votes.pojos.Votes;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class VotesAPIs {
 

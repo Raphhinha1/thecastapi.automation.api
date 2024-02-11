@@ -5,7 +5,7 @@ import lombok.*;
 @Data
 @Builder
 public class Votes {
-    private String image_id;
-    private String sub_id;
+    private Object image_id;
+    private Object sub_id;
     private String value;
 }

@@ -6,7 +6,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.QueryableRequestSpecification;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.SpecificationQuerier;
-import org.testng.Assert;
 import reporting.ExtentReportManager;
 import utils.ConfigReader;
 

@@ -2,8 +2,6 @@ package votes;
 
 import votes.pojos.Votes;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Payloads {
 

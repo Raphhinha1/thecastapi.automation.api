@@ -42,6 +42,7 @@ public class ExtentReportManager {
     public static void logFailureDetails(String log) {
         Setup.extentTest.get().fail(MarkupHelper.createLabel(log, ExtentColor.RED));
     }
+
     public static void logExceptionDetails(String log) {
         Setup.extentTest.get().fail(log);
     }
@@ -57,12 +58,14 @@ public class ExtentReportManager {
     public static void logJson(String json) {
         Setup.extentTest.get().info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
     }
-    public static void logHeaders(List<Header> headersList){
 
-       String[][] arraysHeaders =  headersList.stream().map(header -> new String[] {header.getName(), header.getValue()})
-                        .toArray(String[][] :: new);
+    public static void logHeaders(List<Header> headersList) {
+
+        String[][] arraysHeaders = headersList.stream().map(header -> new String[]{header.getName(), header.getValue()})
+                .toArray(String[][]::new);
         Setup.extentTest.get().info(MarkupHelper.createTable(arraysHeaders));
     }
+
 }
 
 
