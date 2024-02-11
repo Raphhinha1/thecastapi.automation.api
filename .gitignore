@@ -8,6 +8,9 @@
 # IntelliJ IDEA
 /.idea/
 
+# Vs Code
+/.vscode/
+
 # Eclipse
 /.classpath
 /.project
